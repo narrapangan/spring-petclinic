@@ -10,7 +10,7 @@ pipeline {
     
     stage('Test'){
         steps{
-         sh './mvn test'
+         sh 'mvn test'
         }
     }
     
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 timeout(time: 1, unit: 'MINUTES') {
                     retry(5) {
-                        sh './mvn deploy'
+                        sh 'mvn deploy'
                     }
                 }
             }
