@@ -10,7 +10,7 @@ pipeline {
     
     stage('Test'){
         steps{
-         sh 'echo "Fail!"; exit 1'
+         sh './mvn test'
         }
     }
     
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 timeout(time: 1, unit: 'MINUTES') {
                     retry(5) {
-                        sh './flakey-deploy.sh'
+                        sh './mvn deploy'
                     }
                 }
             }
