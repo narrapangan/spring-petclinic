@@ -26,7 +26,7 @@ pipeline {
   }
   post{
     always{
-    slackSend "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+   slackSend color: 'good', message: 'Message from Jenkins Pipeline'
     }
   }
 }
