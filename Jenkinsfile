@@ -1,15 +1,19 @@
 pipeline {
   agent any
   stages {
+    
     stage('Build') {
       steps {
         sh './mvnw package'
       }
-      stage('Test'){
+    }
+    
+    stage('Test'){
         steps{
          sh 'echo "Fail!"; exit 1'
         }
-      }
+    }
+    
      stage('Deploy') {
             steps {
                 timeout(time: 1, unit: 'MINUTES') {
@@ -19,8 +23,6 @@ pipeline {
                 }
             }
         }
-    }
-
   }
   post{
     always{
